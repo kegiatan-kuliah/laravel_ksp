@@ -26,7 +26,7 @@ class MemberRequest extends FormRequest
     {
         return [
             'name' => 'required|min:5|max:255',
-            'email' => 'required|email|unique:members,email',
+            'email' => 'required|email|unique:members,email,'.$this->id,
             'phone' => 'required|min:5|max:20',
             'date_of_joining' => 'required|date'
         ];

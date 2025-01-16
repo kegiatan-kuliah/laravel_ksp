@@ -25,7 +25,10 @@ class SavingAccountRequest extends FormRequest
     public function rules()
     {
         return [
-            // 'name' => 'required|min:5|max:255'
+            'account_number' => 'required|numeric|unique:saving_accounts,account_number,'.$this->id,
+            'balance' => 'required|numeric',
+            'status' => 'required',
+            'member_id' => 'required'
         ];
     }
 
