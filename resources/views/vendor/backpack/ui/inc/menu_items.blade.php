@@ -4,3 +4,4 @@
 <x-backpack::menu-item title="Members" icon="la la-user" :link="backpack_url('member')" />
 <x-backpack::menu-item title="Saving accounts" icon="la la-money" :link="backpack_url('saving-account')" />
 <x-backpack::menu-item title="Loans" icon="la la-handshake" :link="backpack_url('loan')" />
+<x-backpack::menu-item title="Transactions" icon="la la-database" :link="backpack_url('transaction')" />
