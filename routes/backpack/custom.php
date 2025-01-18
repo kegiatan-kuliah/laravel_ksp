@@ -20,6 +20,7 @@ Route::group([
     Route::crud('saving-account', 'SavingAccountCrudController');
     Route::crud('loan', 'LoanCrudController');
     Route::crud('transaction', 'TransactionCrudController');
+    Route::get('/transaction/export', 'TransactionCrudController@export')->name('transaction.export');
 }); // this should be the absolute last line of this file
 
 /**

@@ -18,4 +18,9 @@ class Transaction extends Model
     {
         return $this->belongsTo(Member::class, 'member_id');
     }
+
+    public function export($crud = false)
+    {
+        return '<a class="btn btn-primary" target="_blank" href="'.route('transaction.export').'">Download PDF</a>';
+    }
 }

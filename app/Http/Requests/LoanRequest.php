@@ -31,7 +31,6 @@ class LoanRequest extends FormRequest
             'monthly_installment' => 'required|numeric',
             'application_date' => 'required|date',
             'due_date' => 'required|date',
-            'status' => 'required',
             'member_id' => 'required'
         ];
     }

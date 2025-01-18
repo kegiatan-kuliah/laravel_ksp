@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\TransactionRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
-
+use Barryvdh\DomPDF\Facade\Pdf;
 /**
  * Class TransactionCrudController
  * @package App\Http\Controllers\Admin
@@ -39,6 +39,7 @@ class TransactionCrudController extends CrudController
      */
     protected function setupListOperation()
     {
+        CRUD::addButtonFromModelFunction('top', 'export_button', 'export', 'end');
         CRUD::column([
             'name' => 'transaction_date',
             'label' => 'Transaction Date',
@@ -162,5 +163,12 @@ class TransactionCrudController extends CrudController
     protected function setupUpdateOperation()
     {
         $this->setupCreateOperation();
+    }
+
+    public function export()
+    {
+        $transactions = \App\Models\Transaction::orderBy('id','desc')->get();   
+        $pdf = Pdf::loadView('export.transaction',['transactions' => $transactions]);
+        return $pdf->stream();
     }
 }
